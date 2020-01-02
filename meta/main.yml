@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: MongoDB
+  role_name: libmongocrypt
+  description: Installs libmongocrypt library
+  license: Apache
+  min_ansible_version: 2.8
+  platforms:
+    - name: ubuntu
+      versions:
+        - xenial
+        - bionic
+  galaxy_tags:
+    - libmongocrypt

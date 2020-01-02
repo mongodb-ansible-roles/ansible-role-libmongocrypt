@@ -1,0 +1,16 @@
+---
+- name: Import public key
+  apt_key:
+    url: https://www.mongodb.org/static/pgp/libmongocrypt.asc
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/libmongocrypt.gpg
+
+- name: Add repository
+  apt_repository:
+    repo: deb https://libmongocrypt.s3.amazonaws.com/apt/ubuntu {{ ansible_distribution_release }}/libmongocrypt/1.0 universe
+    state: present
+    filename: libmongocrypt
+
+- name: Install libmongocrypt-dev
+  apt:
+    name: libmongocrypt-dev
