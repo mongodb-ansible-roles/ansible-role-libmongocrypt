@@ -11,16 +11,7 @@ jobs:
           python-version: 3.6
       - name: Install required dependencies
         run: pip install -r requirements.txt
-      - name: Log into RedHat
-        uses: azure/docker-login@v1
-        with:
-          login-server: registry.redhat.io
-          username: ${{ secrets.REDHAT_REGISTRY_SERVICE_ACCOUNT_USERNAME }}
-          password: ${{ secrets.REDHAT_REGISTRY_SERVICE_ACCOUNT_PASSWORD }}
       - run: molecule test --all
-        env:
-          REDHAT_REGISTRY_SERVICE_ACCOUNT_USERNAME: ${{ secrets.REDHAT_REGISTRY_SERVICE_ACCOUNT_USERNAME }}
-          REDHAT_REGISTRY_SERVICE_ACCOUNT_PASSWORD: ${{ secrets.REDHAT_REGISTRY_SERVICE_ACCOUNT_PASSWORD }}
 name: Molecule Test
 'on':
   - push
