@@ -4,3 +4,5 @@
   hosts: all
   roles:
     - role: ansible-role-libmongocrypt
+      vars:
+        libmongocrypt_version: 1.0.1-0
