@@ -13,4 +13,4 @@
 
 - name: Install libmongocrypt-dev
   apt:
-    name: libmongocrypt-dev
+    name: libmongocrypt-dev={{ libmongocrypt_version }}
