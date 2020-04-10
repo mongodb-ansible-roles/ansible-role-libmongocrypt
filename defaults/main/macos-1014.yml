@@ -1,0 +1,3 @@
+---
+libmongocrypt_clone_url: https://github.com/mongodb/libmongocrypt.git
+libmongocrypt_clone_dest: /tmp/libmongocrypt

@@ -1,0 +1,8 @@
+---
+- name: Destroy
+  hosts: all
+  tasks:
+    - name: Delete libmongcrypt test directory
+      file:
+        path: /tmp/libmongocrypt_test
+        state: absent

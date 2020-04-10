@@ -1,0 +1,9 @@
+---
+- gather_facts: false
+  name: Create
+  hosts: all
+  tasks:
+    - name: Create libmongocrypt test directory
+      file:
+        path: /tmp/libmongocrypt_test
+        state: directory

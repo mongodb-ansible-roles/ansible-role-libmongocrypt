@@ -1,0 +1,10 @@
+---
+- name: Check if libmongocrypt needs to be installed
+  command: /usr/local/bin/pkg-config libmongocrypt --libs --cflags
+  changed_when: false
+  ignore_errors: true
+  register: libmongocrypt
+
+- name: Install libmongocrypt
+  include_tasks: install-libmongocrypt-MacOSX.yml
+  when: libmongocrypt is not succeeded

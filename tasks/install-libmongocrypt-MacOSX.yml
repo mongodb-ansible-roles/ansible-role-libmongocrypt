@@ -1,0 +1,24 @@
+---
+- name: Check if repo already exists
+  stat:
+    path: "{{ libmongocrypt_clone_dest }}/.git"
+  register: libmongocrypt_git_repo
+
+- name: Clone libmongocrypt
+  git:
+    repo: "{{ libmongocrypt_clone_url }}"
+    dest: "{{ libmongocrypt_clone_dest }}"
+    version: "{{ libmongocrypt_version }}"
+  when: not libmongocrypt_git_repo.stat.exists
+
+- name: Run cmake
+  command: /usr/local/bin/cmake -DENABLE_SHARED_BSON=ON .
+  args:
+    chdir: "{{ libmongocrypt_clone_dest }}"
+    creates: "{{ libmongocrypt_clone_dest }}/CMakeFiles"
+
+- name: Run cmake install
+  command: /usr/local/bin/cmake --build . --target install
+  args:
+    chdir: "{{ libmongocrypt_clone_dest }}"
+    creates: /usr/local/lib/pkgconfig/libmongocrypt.pc
