@@ -1,11 +1,13 @@
 ---
 - hosts: ubuntu1604
   tasks:
-    - apt:
+    - name: Enable https for apt
+      apt:
         name: apt-transport-https
 
 - hosts: ubuntu1804
   tasks:
-    - apt:
+    - name: Install gpg
+      apt:
         name: gpg
         update_cache: true
