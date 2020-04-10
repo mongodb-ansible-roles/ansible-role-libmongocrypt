@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include ansible-role-libmongocrypt"
+      include_role:
+        name: "ansible-role-libmongocrypt"
+      vars:
+        libmongocrypt_clone_dest: /tmp/libmongocrypt_test
+        libmongocrypt_clone_url: https://github.com/mongodb/libmongocrypt.git
+        libmongocrypt_version: 1.0.3
